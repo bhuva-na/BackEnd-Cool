@@ -9,7 +9,7 @@ export default function Header() {
   const handleToggle = () => setExpanded(!expanded);
 
   return (
-    <Navbar bg="light" expand="lg" expanded={expanded}>
+    <Navbar bg="light" expand="lg" expanded={expanded} sticky="top">
       <Container>
         <Navbar.Brand href="#">
           <img
