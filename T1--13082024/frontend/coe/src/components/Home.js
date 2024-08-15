@@ -17,7 +17,7 @@ const Home = () => {
       <Container className="mt-5">
         <Row className="mb-4 g-4" xs={1} sm={2} md={3} lg={4}>
           <Col>
-            <Card>
+            <Card className="shadow-lg">
               <Card.Img
                 variant="top"
                 src="https://img.freepik.com/premium-photo/human-resources-manager-choosing-professional-profile-hire-virtual-screen-interface-recruitment-concept-businessman-hand-pointing-icon-resource-hr-management-concept_35148-5659.jpg?w=826"
@@ -37,7 +37,7 @@ const Home = () => {
           </Col>
 
           <Col>
-            <Card>
+            <Card className="shadow-lg">
               <Card.Img
                 variant="top"
                 src="https://img.freepik.com/premium-photo/mba-master-business-administration-elearning-education-personal-development-concept_161452-11263.jpg?w=826"
@@ -47,7 +47,7 @@ const Home = () => {
               <Card.Body>
                 <Card.Title>MBA-PROJECTS</Card.Title>
                 <Card.Text>
-                Participate in real world MBA projects that enhance your skills and provide valuable practical experience.                </Card.Text>
+                Participate in real world MBA projects that enhance your skills and provide valuable practical experience valuable to your lifetime career            </Card.Text>
                 <Button variant="primary" href="/mbaprojects">
                   Explore more
                 </Button>
@@ -56,7 +56,7 @@ const Home = () => {
           </Col>
 
           <Col>
-            <Card>
+            <Card className="shadow-lg">
               <Card.Img
                 variant="top"
                 src="https://img.freepik.com/premium-photo/business-handshake-finance-prosperity-money-technology-asset-background_31965-72020.jpg?w=740"
@@ -66,7 +66,7 @@ const Home = () => {
               <Card.Body>
                 <Card.Title>INTERNSHIPS</Card.Title>
                 <Card.Text>
-                Gain hands-on experience and a certificate through our diverse internship opportunities designed to boost your career
+                Gain hands-on experience and a certificate through our diverse internship opportunities designed 
                 </Card.Text>
                 <Button variant="primary" href="/interships">
                   Explore more
@@ -76,7 +76,7 @@ const Home = () => {
           </Col>
 
           <Col>
-            <Card>
+            <Card className="shadow-lg">
               <Card.Img
                 variant="top"
                 src="https://img.freepik.com/premium-photo/redhead-businesswoman-using-her-laptop-against-blue-background-with-letters_1134-53024.jpg?w=740"

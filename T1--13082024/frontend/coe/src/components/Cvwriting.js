@@ -44,7 +44,7 @@ const Cvwriting = () => {
       <div className="benefits">
         <Row className="g-4 justify-content-center">
           <Col xs={12} sm={6} md={4}>
-            <Card border="dark" className="h-100">
+            <Card border="dark" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                   <i className="fas fa-dollar-sign"></i> Basic Package
@@ -58,7 +58,7 @@ const Cvwriting = () => {
             </Card>
           </Col>
           <Col xs={12} sm={6} md={4}>
-            <Card border="dark" className="h-100">
+            <Card border="dark" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                   <i className="fas fa-dollar-sign"></i> Premium Package
@@ -72,7 +72,7 @@ const Cvwriting = () => {
             </Card>
           </Col>
           <Col xs={12} sm={6} md={4}>
-            <Card border="dark" className="h-100">
+            <Card border="dark" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                   <i className="fas fa-dollar-sign"></i> Executive Package

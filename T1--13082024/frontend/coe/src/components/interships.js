@@ -51,7 +51,7 @@ const Interships = () => {
 
       <Row className="mb-7 g-4" xs={1} sm={2} md={3} lg={4}>
           <Col>
-            <Card border="dark" className="h-100">
+            <Card border="dark" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                 <MDBIcon fas icon="graduation-cap" /> Certificates
@@ -63,7 +63,7 @@ const Interships = () => {
             </Card>
           </Col>
           <Col>
-            <Card border="dark" className="h-100">
+            <Card border="dark" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                 <MDBIcon fas icon="handshake" /> Career Counseling
@@ -75,7 +75,7 @@ const Interships = () => {
             </Card>
           </Col>
           <Col>
-            <Card border="dark" className="h-100">
+            <Card border="dark" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                 <MDBIcon fab icon="black-tie" /> Potential Job Offer
@@ -87,7 +87,7 @@ const Interships = () => {
             </Card>
           </Col>
           <Col>
-            <Card border="dark" className="h-100">
+            <Card border="dark" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                 <MDBIcon fas icon="award" /> Recognition and Awards:

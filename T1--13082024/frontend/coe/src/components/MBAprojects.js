@@ -74,7 +74,7 @@ const MBAprojects = () => {
         {/* Benefits Section */}
         <Row className="mb-6 g-4" xs={1} sm={2} md={3} lg={4}>
           <Col>
-            <Card border="dark" className="h-100">
+            <Card border="dark" className="h-100 shadow-lg ">
               <Card.Body>
                 <Card.Title>
                   <i className="fas fa-code-branch"></i> Real-World Experience
@@ -86,7 +86,7 @@ const MBAprojects = () => {
             </Card>
           </Col>
           <Col>
-            <Card border="primary" className="h-100">
+            <Card border="primary" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                   <i className="far fa-address-card"></i> Practical Application
@@ -98,7 +98,7 @@ const MBAprojects = () => {
             </Card>
           </Col>
           <Col>
-            <Card border="primary" className="h-100">
+            <Card border="primary" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                   <i className="fas fa-dollar-sign"></i> Competitive Pay
@@ -110,7 +110,7 @@ const MBAprojects = () => {
             </Card>
           </Col>
           <Col>
-            <Card border="primary" className="h-100">
+            <Card border="primary" className="h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>
                   <i className="fas fa-laptop-code"></i> Enhance Your CV
