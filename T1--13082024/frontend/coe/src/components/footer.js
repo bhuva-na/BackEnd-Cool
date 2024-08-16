@@ -14,8 +14,8 @@ const Footer = () => {
       <section className=''>
         <p className='d-flex justify-content-center align-items-center'>
           <span className='me-3'>Register for free</span>
-          <MDBBtn type='button' outline color="light" rounded href='https://coolgentech.com/contact-us/#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjEzOTkiLCJ0b2dnbGUiOmZhbHNlfQ%3D%3D'>
-            Sign up!
+          <MDBBtn type='button' outline color="light" rounded href='https://coolgentech.com/contact-us/'>
+            Click Here
           </MDBBtn>
         </p>
       </section>
