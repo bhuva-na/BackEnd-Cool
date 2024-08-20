@@ -169,7 +169,7 @@ const EnquiryForm = ({ showForm, handleClose }) => {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">Submit</Button>
+          <Button variant="primary" type="submit" style={{marginTop:"5%"}}>Submit</Button>
         </Form>
       </div>
     </div>
