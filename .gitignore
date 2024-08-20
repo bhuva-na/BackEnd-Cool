@@ -1,0 +1,32 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+
+# Environment Variables
+.env
+
+# Virtual Environment
+venv/
+env/
+
+# Logs
+*.log
+
+# Flask instance folder
+instance/
+
+# SQLite database
+*.sqlite3
+
+# macOS
+.DS_Store
+
+# Deployment specific files
+*.pem
+*.key
+
+# IDE/Editor config files
+.vscode/
+.idea/
+*.iml
