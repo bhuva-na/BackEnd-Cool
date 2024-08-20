@@ -26,7 +26,7 @@ const Internships = () => {
   });
 
   return (
-    <div style={{ backgroundColor: "#e7e6e6" }}>
+    <div style={{ backgroundColor: "#e7e6e6"}}>
       {/* <Header /> */}
       <Container className="mt-0">
         <Row className="mb-9 align-items-center" xs={1} md={2}>
