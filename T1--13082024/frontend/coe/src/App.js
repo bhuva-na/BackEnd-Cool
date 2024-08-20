@@ -6,11 +6,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
 import MBAprojects from "./components/MBAprojects";
 import Cvwriting from "./components/Cvwriting";
-import Interships from "./components/interships";
+import Interships from "./components/Interships";
 import Consulting from "./components/consulting";
+import EnquiryForm from "./components/enquiry";
+import Header from "./components/header"; // Import Header component
+import './App.css'; // Import additional CSS for modal styling
 
 function App() {
   const [projects, setProjects] = useState([]);
+  const [showEnquiryForm, setShowEnquiryForm] = useState(false); // State for showing/hiding enquiry form
 
   useEffect(() => {
     axios
@@ -33,7 +37,7 @@ function App() {
       element: <COEdetails />,
     },
     {
-      path: "/mbaprojects", // Fixed typo here
+      path: "/mbaprojects",
       element: <MBAprojects />,
     },
     {
@@ -48,6 +52,10 @@ function App() {
       path: "/consulting",
       element: <Consulting />,
     },
+    {
+      path: "/enquiry",
+      element: <EnquiryForm />,
+    },
   ]);
 
   const addProject = (newProject) => {
@@ -61,9 +69,30 @@ function App() {
       });
   };
 
+  const handleLetsTalkClick = () => {
+    setShowEnquiryForm(true);
+  };
+
+  const handleCloseEnquiryForm = () => {
+    setShowEnquiryForm(false);
+  };
+
   return (
     <div className="App">
+      <Header onLetsTalkClick={handleLetsTalkClick} />
       <RouterProvider router={router} />
+
+      {/* Enquiry Form Modal */}
+      {showEnquiryForm && (
+        <div className="overlay">
+          <div className="form-container">
+            <button className="close-button" onClick={handleCloseEnquiryForm}>
+              X
+            </button>
+            <EnquiryForm />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

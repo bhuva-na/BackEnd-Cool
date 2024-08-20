@@ -4,12 +4,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { MDBTypography } from 'mdb-react-ui-kit';
 import { MDBCol } from 'mdb-react-ui-kit';
-import BlueLogo from './BlueLogo.jpg';
+// import BlueLogo from './BlueLogo.jpg';
+import finallogo from './finallogo.png'
+
 const COEdetails = () => {
   return (
-    <Container fluid style={{ marginTop: "2%", marginLeft: "2%" }}>
+    <Container fluid style={{ marginLeft: "2%" }}>
       <Row className="align-items-center">
-        <Col xs={12} md={7} className="text-center text-md-start mb-4 mb-md-0">
+        <Col xs={12} md={7} className="text-center text-md-start mb-4 mb-md-0 mt-5">
           
             <MDBTypography tag="h1" variant="h1" className="mb-3">
             Welcome to the Center of Excellence
@@ -25,7 +27,7 @@ const COEdetails = () => {
         <Col xs={12} md={5} className="text-center">
           <MDBCol lg="10" md="8" className="mx-auto">
             <img
-              src={BlueLogo}
+              src={finallogo}
               className="img-fluid rounded-circle"
               alt="Center of Excellence"
               style={{ maxWidth: "100%", height: "auto" }}

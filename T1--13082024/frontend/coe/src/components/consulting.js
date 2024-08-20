@@ -9,24 +9,22 @@ import Container from "react-bootstrap/esm/Container";
 
 const Cvwriting = () => {
   return (
-    <div>
-      <Header />
-      <Container className="mt-5">
-        {/* Section 1 */}
+    <div  style={{backgroundColor:"#e7e6e6"}}>
+      {/* <Header /> */}
+      <Container className="mt-0">
+      
         <Row className="mb-7 align-items-center" xs={1} md={2}>
-          <Col className="d-flex flex-column justify-content-center">
+          <Col className="d-flex flex-column justify-content-center mt-5">
             <MDBTypography tag="h1" variant="h1" className="mb-3">
-            Career Consulting Services
+            CAREERGUIDE CONSULTING
             </MDBTypography>
             <hr />
-            <MDBTypography className="lead mb-0">
+                        <MDBTypography className="lead mb-0">
             Get expert advice and guidance to advance your career and achieve your goals.
               <br />
-              <br />
-              What We Offer?
-              <br />
-              <br />
-              Our career consulting services are designed to help you navigate the complexities of your career path. Whether you're looking to switch industries, climb the corporate ladder, or find work-life balance, our experienced consultants are here to guide you.
+          <br></br>
+              <MDBTypography class="fw-bold"> WHAT WE OFFER?</MDBTypography>
+        Our career consulting services are designed to help you navigate the complexities of your career path. Whether you're looking to switch industries, climb the corporate ladder, or find work-life balance, our experienced consultants are here to guide you.
             </MDBTypography>
           </Col>
           <Col className="text-center">
@@ -43,10 +41,10 @@ const Cvwriting = () => {
        
          
            <MDBTypography style={{alignItems:"center"}}><h1 >
-            How Its Works
+            HOW ITS WORKS
             </h1></MDBTypography>
             <hr />
-        <MDBTypography note noteColor='info' style={{alignItems:"center"}}>
+        <MDBTypography note noteColor='info' style={{alignItems:"center"}} className="mb-5">
         
         <strong>step 1:</strong><p>Book a consultation online</p>
         <strong>step 2:</strong><p> Meet with one of our consultants to discuss your career goals.</p>

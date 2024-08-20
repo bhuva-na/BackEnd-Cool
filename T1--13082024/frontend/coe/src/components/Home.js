@@ -7,92 +7,54 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import COEdetails from "./COEdetails"; // Ensure correct casing and path
+import { MDBTypography } from "mdb-react-ui-kit";
+import twogirls from './twogirls.jpg'
 
 const Home = () => {
   return (
-    <div>
-      <Header />
+    <div style={{backgroundColor:"#e7e6e6"}}>
+      {/* <Header /> */}
       <COEdetails />
 
       <Container className="mt-5">
-        <Row className="mb-4 g-4" xs={1} sm={2} md={3} lg={4}>
-          <Col>
-            <Card className="shadow-lg">
-              <Card.Img
-                variant="top"
-                src="https://img.freepik.com/premium-photo/human-resources-manager-choosing-professional-profile-hire-virtual-screen-interface-recruitment-concept-businessman-hand-pointing-icon-resource-hr-management-concept_35148-5659.jpg?w=826"
-                alt="CV Writing Service"
-                className="card-img"
-              />
-              <Card.Body>
-                <Card.Title>CV-WRITING</Card.Title>
-                <Card.Text>
-                Enhance your job prospects with a professionally crafted CV that highlights your skills, achievements, and experience.
-                </Card.Text>
-                <Button variant="primary" href="/cvwriting">
-                  Explore more
-                </Button>
-              </Card.Body>
-            </Card>
+      <Row className="mb-6 align-items-center" xs={1} md={2}>
+          <Col className=" mb-3">
+            <img
+              src={twogirls}
+              className="img-fluid rounded"
+              alt="Technology"
+              style={{ maxWidth: "100%" }}
+            />
           </Col>
-
-          <Col>
-            <Card className="shadow-lg">
-              <Card.Img
-                variant="top"
-                src="https://img.freepik.com/premium-photo/mba-master-business-administration-elearning-education-personal-development-concept_161452-11263.jpg?w=826"
-                alt="MBA Projects"
-                className="card-img"
-              />
-              <Card.Body>
-                <Card.Title>MBA-PROJECTS</Card.Title>
-                <Card.Text>
-                Participate in real world MBA projects that enhance your skills and provide valuable practical experience valuable to your lifetime career            </Card.Text>
-                <Button variant="primary" href="/mbaprojects">
-                  Explore more
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col>
-            <Card className="shadow-lg">
-              <Card.Img
-                variant="top"
-                src="https://img.freepik.com/premium-photo/business-handshake-finance-prosperity-money-technology-asset-background_31965-72020.jpg?w=740"
-                alt="Internships"
-                className="card-img"
-              />
-              <Card.Body>
-                <Card.Title>INTERNSHIPS</Card.Title>
-                <Card.Text>
-                Gain hands-on experience and a certificate through our diverse internship opportunities designed 
-                </Card.Text>
-                <Button variant="primary" href="/interships">
-                  Explore more
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col>
-            <Card className="shadow-lg">
-              <Card.Img
-                variant="top"
-                src="https://img.freepik.com/premium-photo/redhead-businesswoman-using-her-laptop-against-blue-background-with-letters_1134-53024.jpg?w=740"
-                alt="Career Consultant"
-                className="card-img"
-              />
-              <Card.Body>
-                <Card.Title>CAREER-CONSULTANT</Card.Title>
-                <Card.Text>
-                Get expert advice and guidance to advance your career and achieve your goals with personalized support
-                </Card.Text>
-                <Button variant="primary" href="/consulting">
-                  Explore more
-                </Button>
-              </Card.Body>
-            </Card>
+          <Col className="d-flex flex-column ">
+            <MDBTypography  className="mb-0" tag="h5" variant="h5" class="fw-bold">
+              Who We Are
+              
+              </MDBTypography>
+              <hr/>
+             
+              <MDBTypography tag="h5" variant="h5">
+              Empowering businesses of all sizes to thrive in the digital age
+            </MDBTypography>
+        <hr/>
+            <MDBTypography className="lead mb-0" tag="h5" variant="h5" class="fw-bold">
+              Mission
+              </MDBTypography>
+            
+              <MDBTypography className="fs-5 lh-base">
+              We deliver cutting-edge solutions across cloud, AI, digital, branding, consulting, and sustainability to transform businesses and fuel their success.
+              <br></br>
+              Our commitment to budget-conscious innovation, exceptional quality, on-time delivery, and industry-leading standards ensures future-proof solutions for our clients
+              </MDBTypography>
+              <MDBTypography className="lead mb-0" tag="h5" variant="h5" class="fw-bold">
+              Vision
+              </MDBTypography>
+            
+              <MDBTypography className="fs-5 lh-sm">
+              Empowering businesses of all sizes to thrive in the digital age
+              </MDBTypography>
+              
+           
           </Col>
         </Row>
       </Container>

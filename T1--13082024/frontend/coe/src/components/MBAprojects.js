@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { MDBTypography } from "mdb-react-ui-kit";
@@ -6,20 +6,37 @@ import Header from "./header";
 import Footer from "./footer";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
+import robotic from './robotic.jpg';
+import threed from './threed.jpg';
 
 const MBAprojects = () => {
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  const handleMouseEnter = (index) => {
+    setHoveredCard(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredCard(null);
+  };
+
+  const cardStyle = (index) => ({
+    transition: 'transform 0.3s, box-shadow 0.3s',
+    transform: hoveredCard === index ? 'scale(1.05)' : 'scale(1)',
+    boxShadow: hoveredCard === index ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 2px 10px rgba(0, 0, 0, 0.1)',
+  });
+
   return (
-    <div>
-      <Header />
-      <Container className="mt-5">
-        {/* Section 1 */}
-        <Row className="mb-8 align-items-center" xs={1} md={2}>
-          <Col className="d-flex flex-column justify-content-center">
-            <MDBTypography tag="h1" variant="h1" className="mb-3">
-              MBA Projects
+    <div style={{ backgroundColor: "#e7e6e6" }}>
+      {/* <Header /> */}
+      <Container className="mt-0">
+        <Row className="mb-6 align-items-center" xs={1} md={2}>
+          <Col className="d-flex flex-column justify-content-center  mb-6">
+            <MDBTypography tag="h1" variant="h1" className="mb-1 mt-5">
+              RESEARCH PROJECTS
             </MDBTypography>
             <hr />
-            <MDBTypography className="lead mb-0">
+            <MDBTypography className="fs-5 lh-sm">
               Engage in real-world projects, gain valuable experience, and earn
               competitive pay.
               <br />
@@ -35,30 +52,29 @@ const MBAprojects = () => {
           </Col>
           <Col className="text-center">
             <img
-              src="https://img.freepik.com/premium-photo/high-angle-view-business-people-using-laptop-desk-office_1048944-17252369.jpg?w=740"
+              src={robotic}
               className="img-fluid rounded"
               alt="Team Collaboration"
-              style={{ maxWidth: "100%" }}
+              style={{ width: "100%", height: "auto" }}
             />
           </Col>
         </Row>
 
-        {/* Section 2 */}
         <Row className="mb-7 align-items-center" xs={1} md={2}>
           <Col className="text-center mb-4">
             <img
-              src="https://img.freepik.com/premium-photo/technology-theme-drawing-table-with-computer-double-exposure-concept-information_700248-90700.jpg?w=740"
+              src={threed}
               className="img-fluid rounded"
               alt="Technology"
               style={{ maxWidth: "100%" }}
             />
           </Col>
           <Col className="d-flex flex-column justify-content-center">
-            <MDBTypography tag="h1" variant="h1" className="mb-4">
-              How It Works
+            <MDBTypography tag="h1" variant="h1" className="mb-2">
+              HOW IT WORKS
             </MDBTypography>
             <hr />
-            <MDBTypography className="lead mb-0">
+            <MDBTypography className="fs-5 lh-base">
               Our MBA projects offer students the opportunity to work on real-world
               business challenges.
               <br />
@@ -74,7 +90,13 @@ const MBAprojects = () => {
         {/* Benefits Section */}
         <Row className="mb-6 g-4" xs={1} sm={2} md={3} lg={4}>
           <Col>
-            <Card border="dark" className="h-100 shadow-lg ">
+            <Card
+              border="dark"
+              className="h-100 shadow-lg"
+              style={cardStyle(1)}
+              onMouseEnter={() => handleMouseEnter(1)}
+              onMouseLeave={handleMouseLeave}
+            >
               <Card.Body>
                 <Card.Title>
                   <i className="fas fa-code-branch"></i> Real-World Experience
@@ -86,7 +108,13 @@ const MBAprojects = () => {
             </Card>
           </Col>
           <Col>
-            <Card border="primary" className="h-100 shadow-lg">
+            <Card
+              border="primary"
+              className="h-100 shadow-lg"
+              style={cardStyle(2)}
+              onMouseEnter={() => handleMouseEnter(2)}
+              onMouseLeave={handleMouseLeave}
+            >
               <Card.Body>
                 <Card.Title>
                   <i className="far fa-address-card"></i> Practical Application
@@ -98,7 +126,13 @@ const MBAprojects = () => {
             </Card>
           </Col>
           <Col>
-            <Card border="primary" className="h-100 shadow-lg">
+            <Card
+              border="primary"
+              className="h-100 shadow-lg"
+              style={cardStyle(3)}
+              onMouseEnter={() => handleMouseEnter(3)}
+              onMouseLeave={handleMouseLeave}
+            >
               <Card.Body>
                 <Card.Title>
                   <i className="fas fa-dollar-sign"></i> Competitive Pay
@@ -110,7 +144,13 @@ const MBAprojects = () => {
             </Card>
           </Col>
           <Col>
-            <Card border="primary" className="h-100 shadow-lg">
+            <Card
+              border="primary"
+              className="h-100 shadow-lg"
+              style={cardStyle(4)}
+              onMouseEnter={() => handleMouseEnter(4)}
+              onMouseLeave={handleMouseLeave}
+            >
               <Card.Body>
                 <Card.Title>
                   <i className="fas fa-laptop-code"></i> Enhance Your CV
