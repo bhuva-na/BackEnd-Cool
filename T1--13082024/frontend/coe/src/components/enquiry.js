@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import '../App.css'; // Import your updated CSS file
+import axios from 'axios'; // Import Axios for making HTTP requests
 
 const EnquiryForm = ({ showForm, handleClose }) => {
   const [formData, setFormData] = useState({
@@ -78,13 +79,24 @@ const EnquiryForm = ({ showForm, handleClose }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate all fields before submission
     Object.keys(formData).forEach((field) => validateField(field, formData[field]));
 
     if (!Object.values(errors).some((error) => error)) {
-      alert('Form submitted successfully!');
+      try {
+        // Send form data to Flask backend
+        const response = await axios.post('http://localhost:5000/api/send-enquiry', formData);
+        if (response.status === 200) {
+          alert('Form submitted successfully!');
+        } else {
+          alert('Failed to submit the form.');
+        }
+      } catch (error) {
+        console.error('There was an error submitting the form:', error);
+      }
+
       // Clear form data if needed
       setFormData({
         name: '',
@@ -99,8 +111,8 @@ const EnquiryForm = ({ showForm, handleClose }) => {
   if (!showForm) return null; // If not showing, render nothing
 
   return (
-    <div className="modal-overlay" onClick={handleClose} >
-      <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{backgroundColor:"white"}}>
+    <div className="modal-overlay" onClick={handleClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ backgroundColor: "white" }}>
         <button className="close-button" onClick={handleClose}>
           &times;
         </button>
@@ -144,9 +156,9 @@ const EnquiryForm = ({ showForm, handleClose }) => {
             <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group controlId="formServices" style={{marginTop:"5%"}}>
+          <Form.Group controlId="formServices" style={{ marginTop: "5%" }}>
             <Form.Label>SERVICES</Form.Label>
-            {['RESEARCH PROJECTS', 'PATHWAY INTERNSHIP', 'PRORESUME CRAFTING', 'CAREERGUIDE CONSULTING', 'ALL  THE ABOVE'].map((service) => (
+            {['RESEARCH PROJECTS', 'PATHWAY INTERNSHIP', 'PRORESUME CRAFTING', 'CAREERGUIDE CONSULTING', 'ALL THE ABOVE'].map((service) => (
               <Form.Check
                 key={service}
                 type="checkbox"
@@ -159,7 +171,7 @@ const EnquiryForm = ({ showForm, handleClose }) => {
             ))}
           </Form.Group>
 
-          <Form.Group controlId="formMessage" style={{marginTop:"5%"}}>
+          <Form.Group controlId="formMessage" style={{ marginTop: "5%" }}>
             <Form.Label>MESSAGE</Form.Label>
             <Form.Control
               as="textarea"
@@ -169,7 +181,7 @@ const EnquiryForm = ({ showForm, handleClose }) => {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit" style={{marginTop:"5%"}}>Submit</Button>
+          <Button variant="primary" type="submit" style={{ marginTop: "5%" }}>Submit</Button>
         </Form>
       </div>
     </div>
