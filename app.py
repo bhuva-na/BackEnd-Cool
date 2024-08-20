@@ -4,7 +4,8 @@ from sendgrid.helpers.mail import Mail
 import os
 from dotenv import load_dotenv
 from flask_cors import CORS
-from urllib.parse import quote
+
+from urllib.parse import quote as url_quote
 
 
 # Load environment variables from .env file
