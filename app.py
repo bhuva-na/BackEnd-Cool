@@ -9,26 +9,20 @@ from flask_cors import CORS
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://coe-ochre.vercel.app"}})
+CORS(app, resources={r"/*": {"origins": "https://backend-cool-14.onrender.com"}})
 
 @app.route('/send-enquiry', methods=['POST'])
 def send_enquiry():
     try:
+        # Get form data from request
         data = request.json
-        if not data:
-            raise ValueError('No data received')
-
         name = data.get('name')
         contact_number = data.get('contactNumber')
         email = data.get('email')
         services = ', '.join(data.get('services', []))
         message = data.get('message')
 
-        # Validate input data
-        if not all([name, contact_number, email]):
-            raise ValueError('Missing required fields')
-
-        # Prepare email content
+        # Create the email message
         email_content = (
             f"Name: {name}\n"
             f"Contact Number: {contact_number}\n"
@@ -44,7 +38,10 @@ def send_enquiry():
             plain_text_content=email_content
         )
 
+        # Initialize SendGrid client
         sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
+
+        # Send the email
         response = sg.send(msg)
 
         return jsonify({
@@ -56,3 +53,4 @@ def send_enquiry():
             'status': 'error',
             'message': str(e)
         }), 500
+
