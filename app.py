@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "https://backend-cool-14.onrender.com"}})
 
-@app.route('/send-enquiry', methods=['POST'])
+@app.route('/send-enquiry', methods=['POST','GET'])
 def send_enquiry():
     try:
         # Get form data from request
