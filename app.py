@@ -12,7 +12,8 @@ from urllib.parse import quote as url_quote
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://coe-ochre.vercel.app"}}, supports_credentials=True)
+
 @app.route('/send-enquiry', methods=['POST'])
 def send_enquiry():
     try:
