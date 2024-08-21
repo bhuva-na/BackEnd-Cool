@@ -89,3 +89,20 @@ def send_enquiry():
     except Exception as e:
         logger.error(f'Error: {str(e)}')
         return jsonify({'status': 'error', 'message': 'An error occurred while sending the enquiry form. Please try again later.'}), 500
+
+def test_sendgrid():
+    try:
+        msg = Mail(
+            from_email=os.getenv('SENDGRID_SENDER_EMAIL'),
+            to_emails=os.getenv('SENDGRID_RECIPIENT_EMAIL'),
+            subject='Test Email',
+            plain_text_content='This is a test email.'
+        )
+
+        sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
+        response = sg.send(msg)
+        print(f'SendGrid response: {response.status_code} - {response.body}')
+    except Exception as e:
+        print(f'Error: {str(e)}')
+
+test_sendgrid()
