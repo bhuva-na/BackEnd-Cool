@@ -9,7 +9,7 @@ from flask_cors import CORS
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://backend-cool-14.onrender.com"}})
+CORS(app, resources={r"/*": {"origins":"https://cool-gen-work-task.vercel.app"}})
 
 @app.route('/send-enquiry', methods=['POST','GET'])
 def send_enquiry():
