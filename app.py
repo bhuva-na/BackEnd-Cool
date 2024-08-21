@@ -54,3 +54,6 @@ def send_enquiry():
             'message': str(e)
         }), 500
 
+@app.route('/')
+def index():
+    return "Welcome to the backend!"
