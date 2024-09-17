@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000000;
+            background-image: url("/static/robot.jpg");  /* Path to your image */
+            background-size: cover;                          /* Make the image cover the full screen */
+            background-position: center;                     /* Center the image */
+            background-repeat: no-repeat; 
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            
+        }
+        #chatbox {
+           
+            flex-direction: column;
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+            padding: 10px;
+           
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            margin-left: 250px
+        }
+        #chatbox p {
+            margin: 10px 0;
+        }
+        #userInput {
+            
+            
+            display: flex;
+            margin-top: 10px;
+            margin-left: 350px;
+
+            
+        }
+        #userInput input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #userInput button {
+            padding: 10px;
+            border: none;
+            background: #333;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="chat-container">
+    <div id="chatbox">
+        <p><strong>Groot : </strong> Hi, <strong>I'm Groot</strong>, Your virtual chat assistant!<br>Before we get started, please enter your name</p>
+    </div>
+
+    <div id="userInput">
+        <input type="text" id="userMsg" placeholder="Type your message here...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    function sendMessage() {
+        const userMsg = document.getElementById("userMsg").value;
+        if (userMsg.trim() === "") return;
+        
+        const chatbox = document.getElementById("chatbox");
+        const userMessageHtml = `<p><strong>You:</strong> ${userMsg}</p>`;
+        chatbox.innerHTML += userMessageHtml;
+
+        fetch("/get", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `msg=${encodeURIComponent(userMsg)}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            const botMessageHtml = `<p><strong>Groot : </strong> ${data.response}</p>`;
+            chatbox.innerHTML += botMessageHtml;
+            chatbox.scrollTop = chatbox.scrollHeight;
+        });
+        
+        document.getElementById("userMsg").value = "";
+    }
+</script>
+
+</body>
+</html>
