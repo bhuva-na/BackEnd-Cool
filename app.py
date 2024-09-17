@@ -109,7 +109,6 @@ def message_probability(user_message, recognised_words, single_response=False, r
     for word in user_message:
         if word in recognised_words:
             message_certainty += 1
-
     percentage = float(message_certainty) / float(len(recognised_words))
 
     for word in required_words:
