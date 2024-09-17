@@ -18,7 +18,7 @@ user_name = ""
 user_number = ""
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins":["https://coe-ochre.vercel.app", "https://cool-gen-work-task.vercel.app","http://localhost:3000","https://coe-ez3b7kgwx-bhuva-nas-projects.vercel.app"]}})
+CORS(app, resources={r"/*": {"origins":["https://coe-ochre.vercel.app"]}})
 
 
 # MySQL Database configuration
