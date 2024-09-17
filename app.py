@@ -42,56 +42,89 @@ def connect_db():
         return None
 
 # COE Email integration
-@app.route('/send-enquiry', methods=['POST'])
+# @app.route('/send-enquiry', methods=['POST'])
+# def send_enquiry():
+#     try:
+#         # Get form data from request
+#         data = request.get_json()
+#         print("Received data:", data)  # Debugging: Log the received data
+
+#         # Validate required fields
+#         name = data.get('name')
+#         contact_number = data.get('contactNumber')
+#         email = data.get('email')
+#         services = ', '.join(data.get('services', []))
+#         message = data.get('message')
+
+#         if not name or not contact_number or not email or not message:
+#             return jsonify({'status': 'error', 'message': 'All fields are required.'}), 400
+
+#         # Create the email message
+#         email_content = (
+#             f"Name: {name}\n"
+#             f"Contact Number: {contact_number}\n"
+#             f"Email: {email}\n"
+#             f"Services: {services}\n\n"
+#             f"Message:\n{message}"
+#         )
+
+#         msg = Mail(
+#             from_email=os.getenv('SENDGRID_SENDER_EMAIL'),
+#             to_emails=os.getenv('SENDGRID_RECIPIENT_EMAIL'),
+#             subject='Enquiry Form Submission',
+#             plain_text_content=email_content
+#         )
+
+#         # Initialize SendGrid client
+#         sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
+
+#         # Send the email
+#         response = sg.send(msg)
+#         print(f"SendGrid response: {response.status_code}")  # Debugging: Log the response status code
+
+#         return jsonify({
+#             'status': 'success',
+#             'message': f'Enquiry form sent successfully! Status code: {response.status_code}'
+#         })
+#     except Exception as e:
+#         print(f"Error occurred: {e}")  # Debugging: Log the error
+#         return jsonify({
+#             'status': 'error',
+#             'message': str(e)
+#         }), 500
+
+@app.route('/test-send-enquiry', methods=['GET'])
 def send_enquiry():
+    # Pre-filled default test values
+    name = 'Test User'
+    email = 'bhuvaneshwarit744@gmail.com'  # Replace with your test email
+    message = 'This is a test message from the SendGrid integration.'
+
+    email_content = f"""
+    You have received a new enquiry from {name}:
+    Email: {email}
+    Message: {message}
+    """
+
     try:
-        # Get form data from request
-        data = request.get_json()
-        print("Received data:", data)  # Debugging: Log the received data
-
-        # Validate required fields
-        name = data.get('name')
-        contact_number = data.get('contactNumber')
-        email = data.get('email')
-        services = ', '.join(data.get('services', []))
-        message = data.get('message')
-
-        if not name or not contact_number or not email or not message:
-            return jsonify({'status': 'error', 'message': 'All fields are required.'}), 400
-
-        # Create the email message
-        email_content = (
-            f"Name: {name}\n"
-            f"Contact Number: {contact_number}\n"
-            f"Email: {email}\n"
-            f"Services: {services}\n\n"
-            f"Message:\n{message}"
-        )
-
-        msg = Mail(
-            from_email=os.getenv('SENDGRID_SENDER_EMAIL'),
-            to_emails=os.getenv('SENDGRID_RECIPIENT_EMAIL'),
-            subject='Enquiry Form Submission',
+        # Create Mail object
+        mail = Mail(
+            from_email='rizanabhuvana@gmail.com',  # Replace with your sender email
+            to_emails='bhuvaneshwarit744@gmail.com',  # Replace with recipient email
+            subject='New Test Enquiry Received',
             plain_text_content=email_content
         )
 
-        # Initialize SendGrid client
-        sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
+        # Send email using SendGrid
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        response = sg.send(mail)
 
-        # Send the email
-        response = sg.send(msg)
-        print(f"SendGrid response: {response.status_code}")  # Debugging: Log the response status code
+        return jsonify({"status": "success", "message": "Test email sent successfully!"}), 200
 
-        return jsonify({
-            'status': 'success',
-            'message': f'Enquiry form sent successfully! Status code: {response.status_code}'
-        })
     except Exception as e:
-        print(f"Error occurred: {e}")  # Debugging: Log the error
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
+        print(e)
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 
 # Chatbot integration
 def store_user_details(name, phone):
