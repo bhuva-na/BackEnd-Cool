@@ -45,50 +45,53 @@ def connect_db():
 @app.route('/send-enquiry', methods=['POST'])
 def send_enquiry():
     try:
-        if request.method == 'POST':
-            # Get form data from request
-            data = request.get_json()
-            name = data.get('name')
-            contact_number = data.get('contactNumber')
-            email = data.get('email')
-            services = ', '.join(data.get('services', []))
-            message = data.get('message')
+        # Get form data from request
+        data = request.get_json()
+        print("Received data:", data)  # Debugging: Log the received data
 
-            if not name or not contact_number or not email or not message:
-                return jsonify({'status': 'error', 'message': 'All fields are required.'}), 400
+        # Validate required fields
+        name = data.get('name')
+        contact_number = data.get('contactNumber')
+        email = data.get('email')
+        services = ', '.join(data.get('services', []))
+        message = data.get('message')
 
-            # Create the email message
-            email_content = (
-                f"Name: {name}\n"
-                f"Contact Number: {contact_number}\n"
-                f"Email: {email}\n"
-                f"Services: {services}\n\n"
-                f"Message:\n{message}"
-            )
+        if not name or not contact_number or not email or not message:
+            return jsonify({'status': 'error', 'message': 'All fields are required.'}), 400
 
-            msg = Mail(
-                from_email=os.getenv('SENDGRID_SENDER_EMAIL'),
-                to_emails=os.getenv('SENDGRID_RECIPIENT_EMAIL'),
-                subject='Enquiry Form Submission',
-                plain_text_content=email_content
-            )
+        # Create the email message
+        email_content = (
+            f"Name: {name}\n"
+            f"Contact Number: {contact_number}\n"
+            f"Email: {email}\n"
+            f"Services: {services}\n\n"
+            f"Message:\n{message}"
+        )
 
-            # Initialize SendGrid client
-            sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
+        msg = Mail(
+            from_email=os.getenv('SENDGRID_SENDER_EMAIL'),
+            to_emails=os.getenv('SENDGRID_RECIPIENT_EMAIL'),
+            subject='Enquiry Form Submission',
+            plain_text_content=email_content
+        )
 
-            # Send the email
-            response = sg.send(msg)
+        # Initialize SendGrid client
+        sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
 
-            return jsonify({
-                'status': 'success',
-                'message': f'Enquiry form sent successfully! Status code: {response.status_code}'
-            })
+        # Send the email
+        response = sg.send(msg)
+        print(f"SendGrid response: {response.status_code}")  # Debugging: Log the response status code
+
+        return jsonify({
+            'status': 'success',
+            'message': f'Enquiry form sent successfully! Status code: {response.status_code}'
+        })
     except Exception as e:
+        print(f"Error occurred: {e}")  # Debugging: Log the error
         return jsonify({
             'status': 'error',
             'message': str(e)
         }), 500
-
 
 # Chatbot integration
 def store_user_details(name, phone):
