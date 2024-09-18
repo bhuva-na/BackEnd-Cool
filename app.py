@@ -93,7 +93,7 @@ def connect_db():
 #             'message': str(e)
 #         }), 500
 
-@app.route('/test-send-enquiry', methods=['GET'])
+@app.route('/send-enquiry', methods=['GET'])
 def send_enquiry():
     # Pre-filled default test values
     name = 'Test User'
@@ -107,7 +107,7 @@ def send_enquiry():
     """
 
     try:
-        # Create Mail object
+        # Create Mail object with the email details
         mail = Mail(
             from_email='rizanabhuvana@gmail.com',  # Replace with your sender email
             to_emails='bhuvaneshwarit744@gmail.com',  # Replace with recipient email
@@ -115,9 +115,11 @@ def send_enquiry():
             plain_text_content=email_content
         )
 
-        # Send email using SendGrid
-        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        # Send email using SendGrid API
+        sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
         response = sg.send(mail)
+
+        print(f"SendGrid response: {response.status_code}")  # Log response status
 
         return jsonify({"status": "success", "message": "Test email sent successfully!"}), 200
 
