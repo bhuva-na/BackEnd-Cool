@@ -18,7 +18,7 @@ user_name = ""
 user_number = ""
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins":["https://coe-ochre.vercel.app"]}})
+CORS(app, resources={r"/*": {"origins":["https://coolgen-coe-website.vercel.app/"]}})
 
 
 # MySQL Database configuration
@@ -84,7 +84,7 @@ def send_enquiry():
 
         return jsonify({
             'status': 'success',
-            'message': f'Enquiry form sent successfully! Status code: {response.status_code}'
+            'message': f'Enquiry form sent successfully! '
         })
     except Exception as e:
         print(f"Error occurred: {e}")  # Debugging: Log the error
