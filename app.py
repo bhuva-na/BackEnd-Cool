@@ -130,14 +130,14 @@ def send_enquiry():
 
 
 # Chatbot integration
-def store_user_details(name, phone):
+def store_user_details(name, phone,email):
     conn = connect_db()
     if conn is None:
         return "Database connection failed."
     
     try:
         cur = conn.cursor()
-        query = "INSERT INTO userdetails (name, phone,email) VALUES (%s, %s)"
+        query = "INSERT INTO userdetails (name, phone,email) VALUES (%s, %s,%s)"
         cur.execute(query, (name, phone,email))
         conn.commit()
     except Exception as e:
