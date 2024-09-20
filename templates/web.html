@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
+    <title>Cuby</title>
     <style>
         
         body {
@@ -70,7 +70,7 @@
 <body>
 <div class="chat-container">
     <div id="chatbox">
-        <p><strong>Groot : </strong> Hi, <strong>I'm Groot</strong>, Your virtual chat assistant!<br>Before we get started, please enter your name</p>
+        <p><strong>Cuby: </strong> Hi, <strong>I'm Cuby</strong>, Your virtual chat assistant!<br>Before we get started, please enter your name</p>
     </div>
 
     <div id="userInput">
@@ -97,7 +97,7 @@
         })
         .then(response => response.json())
         .then(data => {
-            const botMessageHtml = `<p><strong>Groot : </strong> ${data.response}</p>`;
+            const botMessageHtml = `<p><strong>Cuby : </strong> ${data.response}</p>`;
             chatbox.innerHTML += botMessageHtml;
             chatbox.scrollTop = chatbox.scrollHeight;
         });
