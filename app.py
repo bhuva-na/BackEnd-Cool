@@ -167,7 +167,9 @@ def message_probability(user_message, recognised_words, single_response=False, r
 
 def check_all_messages(message):
     global name_collected, phone_collected, email_collected, user_name, user_number, user_email
-
+   
+   
+    # If name is not collected, ask for it
     if not name_collected:
         user_name = " ".join(message).strip()  # Capture the user's name
         if user_name:
@@ -176,15 +178,16 @@ def check_all_messages(message):
         else:
             return "Hello! Before we continue, may I know your name?"
 
+
+    # Once name is collected, ask for phone number
     elif name_collected and not phone_collected:
         user_number = " ".join(message).strip()  # Capture the user's phone number
-        if re.match(r"^\d{10}$", user_number):  # Validating a 10-digit number
+        if re.match(r"^[6-9]\d{9}$", user_number):  # Validating a 10-digit number starting with 6, 7, 8, or 9
             phone_collected = True
-            store_user_details(user_name, user_number)
-            return f"Thank you, {user_name}! Now you can ask me about services or pricing."
+            return "Thank you! Could you please provide your email address?"
         else:
-            return "That doesn't seem like a valid phone number. Please enter a 10-digit number."
-     # Once phone number is collected, ask for email
+            return "That doesn't seem like a valid phone number."
+    # Once phone number is collected, ask for email
     elif phone_collected and not email_collected:
         user_email = " ".join(message).strip()  # Capture the user's email
        
@@ -197,6 +200,8 @@ def check_all_messages(message):
             return f"Thank you, {user_name}! Now you can ask me about services or pricing."
         else:
             return "That doesn't seem like a valid email address. "
+
+
 
 
 
